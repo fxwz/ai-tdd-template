@@ -1,0 +1,47 @@
+{
+  "projectName": "AI-Leveraged TDD Template",
+  "description": "A template repository for AI-leveraged Test-Driven Development (TDD) projects in any programming language.",
+  "languages": [
+    {
+      "name": "Python",
+      "version": "3.7+",
+      "dependencies": ["pytest", "requests"]
+    },
+    {
+      "name": "JavaScript",
+      "version": "12+",
+      "dependencies": ["mocha", "chai"]
+    },
+    {
+      "name": "Java",
+      "version": "8+",
+      "dependencies": ["junit", "mockito"]
+    }
+  ],
+  "testingFrameworks": [
+    {
+      "language": "Python",
+      "framework": "pytest"
+    },
+    {
+      "language": "JavaScript",
+      "framework": "mocha"
+    },
+    {
+      "language": "Java",
+      "framework": "junit"
+    }
+  ],
+  "defaultValues": {
+    "projectName": "My TDD Project",
+    "language": "Python",
+    "testingFramework": "pytest"
+  },
+  "explanations": {
+    "projectName": "The name of your project.",
+    "description": "A brief description of your project.",
+    "languages": "A list of programming languages supported by the template.",
+    "testingFrameworks": "A list of testing frameworks supported by the template.",
+    "defaultValues": "Default values for the project configuration."
+  }
+}

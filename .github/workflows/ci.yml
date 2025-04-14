@@ -1,0 +1,64 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        language: [python, javascript, java]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      if: matrix.language == 'python'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Set up Node.js
+      if: matrix.language == 'javascript'
+      uses: actions/setup-node@v2
+      with:
+        node-version: '12.x'
+
+    - name: Set up Java
+      if: matrix.language == 'java'
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+
+    - name: Install dependencies (Python)
+      if: matrix.language == 'python'
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Install dependencies (JavaScript)
+      if: matrix.language == 'javascript'
+      run: npm install
+
+    - name: Install dependencies (Java)
+      if: matrix.language == 'java'
+      run: |
+        ./mvnw install
+
+    - name: Run tests (Python)
+      if: matrix.language == 'python'
+      run: |
+        source venv/bin/activate
+        pytest
+
+    - name: Run tests (JavaScript)
+      if: matrix.language == 'javascript'
+      run: npm test
+
+    - name: Run tests (Java)
+      if: matrix.language == 'java'
+      run: |
+        ./mvnw test
